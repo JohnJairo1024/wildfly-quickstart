@@ -17,7 +17,6 @@ The `batch-processing` quickstart shows how to use chunk oriented batch jobs to 
 //*************************************************
 // Shared CD and Product Release content
 //*************************************************
-
 == What is it?
 
 This quickstart simulates a file importation using batch jobs. To make it easy, this quickstart offers the user a way to generate files. The generated file can have its name and the number of records customized. The user can also specify if the file contains an error or not.
@@ -36,10 +35,15 @@ The job contains two tasks:
 The database schema defines that the column for name is unique. For that reason, any attempt to persist a duplicate value will throw an exception. On the second attempt to run the job, the `ChunkCheckpoint` provides information to skip the contacts that were already persisted.
 
 //*************************************************
-// Product Release content only
+// Product Release and OpenShift content only
 //*************************************************
-
 ifndef::EAPCDRelease[]
+
+* To run the quickstart on your own {productName} server, see xref:run_the_quickstart_on_eap_server[Run the Quickstart on {productName}].
+* To run the quickstart on your OpenShift, see xref:run_the_quickstart_on_openshift[Run the Quickstart on Openshift].
+
+[[run_the_quickstart_on_eap_server]]
+== Run the Quickstart on {productName}
 
 // Considerations for Use in a Production Environment
 include::../shared-doc/development-shortcuts.adoc[leveloffset=+1]
@@ -159,12 +163,26 @@ include::../shared-doc/run-the-quickstart-in-jboss-developer-studio.adoc[levelof
 // Debug the Application
 include::../shared-doc/debug-the-application.adoc[leveloffset=+1]
 
+[[run_the_quickstart_on_openshift]]
+== Run the Quickstart on OpenShift
+
+// Getting Started with OpenShift
+include::../shared-doc/cd-openshift-getting-started.adoc[leveloffset=+1]
+//Prepare OpenShift for Quickstart Deployment
+include::../shared-doc/cd-create-project.adoc[leveloffset=+1]
+// Import the Latest {xpaasproduct-shortname} Image Streams and Templates
+include::../shared-doc/cd-import-imagestreams-templates.adoc[leveloffset=+1]
+// Deploy the {ProductShortName} Source-to-Image (S2I) Quickstart to OpenShift
+include::../shared-doc/cd-deploy-project.adoc[leveloffset=+1]
+// OpenShift Post Deployment Tasks: This is not currently needed.
+// include::../shared-doc/cd-post-deployment-tasks.adoc[leveloffset=+1]
+
+// end ifndef::EAPCDRelease[]
 endif::[]
 
 //*************************************************
 // CD Release content only
 //*************************************************
-
 ifdef::EAPCDRelease[]
 
 // Getting Started with OpenShift
@@ -178,5 +196,6 @@ include::../shared-doc/cd-deploy-project.adoc[leveloffset=+1]
 // OpenShift Post Deployment Tasks: This is not currently needed.
 // include::../shared-doc/cd-post-deployment-tasks.adoc[leveloffset=+1]
 
+// end ifdef::EAPCDRelease[]
 endif::[]
 
